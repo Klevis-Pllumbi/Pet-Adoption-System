@@ -1,3 +1,2 @@
 <?php
-echo "This is the first page!"
-?>
+echo "Thigit s is the first page...";
