@@ -12,6 +12,13 @@ body{
     color: antiquewhite;
 }
 
+p {
+    font-size: 30px;
+    padding: 0 150px;
+    margin: 0;
+    text-align: center;
+}
+
 span {
     color: peru;
     text-shadow: 2px 0 7px burlywood;

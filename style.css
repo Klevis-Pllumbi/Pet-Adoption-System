@@ -1,17 +1,19 @@
 body {
     font-family: "Poiret One", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: blanchedalmond;
+    height: 100vh;
+    margin: 0;
+    gap: 15px;
+    font-size: 20px;
 }
 
 h1 {
     text-align: center;
     font-family: "Righteous", sans-serif;
-}
-
-p {
-    font-size: 30px;
-    padding: 0 150px;
-    margin: 0;
-    text-align: center;
 }
 
 button {
@@ -22,7 +24,7 @@ button {
     width: 130px;
     border: none;
     border-radius: 10px;
-    background-color: rgba(205, 133, 63, 0.3);
+    background-color: rgba(205, 133, 63, 0.8);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(70px);
     transition: transform 0.2s ease, background-color 0.2s ease;
@@ -30,10 +32,80 @@ button {
 
 button:hover {
     cursor: pointer;
-    background-image: linear-gradient(to bottom, rgba(205, 133, 63, 0.3) , rgba(131, 173, 68, 0.2));
+    background-image: linear-gradient(to bottom, rgba(205, 133, 63, 0.8) , rgba(131, 173, 68, 0.4));
     backdrop-filter: blur(80px);
 }
 
 button:active {
     transform: scale(0.95);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(205, 133, 63, 0.2);
+    backdrop-filter: blur(70px);
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form-group input {
+    padding: 10px;
+    font-size: 20px;
+    width: 230px;
+    border: none;
+    border-bottom: 2px solid rgba(205, 133, 63, 0.3);
+    border-radius: 5px;
+    outline: none;
+    background: none;
+    z-index: 1;
+    font-family: "Poiret One", sans-serif;
+}
+
+.form-group input:focus {
+    border-color: olive;
+}
+
+.form-group label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    padding: 0 5px;
+    color: olive;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    top: -17px;
+    left: 10px;
+    font-size: 16px;
+    color: olive;
+    font-weight: bold;
+}
+
+a {
+    color: olive;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    padding: 0;
+    margin: 0;
 }
