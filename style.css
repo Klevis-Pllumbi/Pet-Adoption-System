@@ -72,6 +72,25 @@ form {
     font-family: "Poiret One", sans-serif;
 }
 
+.form-group input.error {
+    border-color: red;
+    color: red;
+}
+
+.form-group input.error:focus {
+    border-color: red;
+    color: red;
+}
+
+.form-group label.error {
+    color: red;
+}
+
+.form-group input.error:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    color: red;
+}
+
 .form-group input:focus {
     border-color: olive;
 }
@@ -108,4 +127,31 @@ a:hover {
 p {
     padding: 0;
     margin: 0;
+}
+
+.error-container {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+    width: 500px;
+}
+
+.errors {
+    background-color: #f44336;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    display: none;
+}
+
+.errors.show {
+    display: block;
+    opacity: 1;
 }
