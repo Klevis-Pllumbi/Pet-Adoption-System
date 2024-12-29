@@ -70,17 +70,24 @@ require "connection.php";
 
     //Load Composer's autoloader
     require 'vendor/autoload.php';
+
+    require_once __DIR__ . '/vendor/autoload.php';
+
+    use Dotenv\Dotenv;
+    // Load environment variables
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
     function sendVerificationEmail(string $email, string $name, string $verification_token) {
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
 
-            $mail->Host = 'smtp.gmail.com';
+            $mail->Host = $_ENV['SMTP_HOST'];
             $mail->SMTPAuth = true;
-            $mail->Username = 'pllumbiklevis1@gmail.com';
-            $mail->Password = 'kxmm fbtl uocx zlit';
-            $mail->SMTPSecure = 'tls';
-            $mail->Port = 587;
+            $mail->Username = $_ENV['SMTP_USER'];
+            $mail->Password = $_ENV['SMTP_PASS'];
+            $mail->SMTPSecure = $_ENV['SMTP_ENCRYPTION'];
+            $mail->Port = $_ENV['SMTP_PORT'];
 
             $mail->setFrom('pllumbiklevis1@gmail.com', $name);
             $mail->addAddress($email);
