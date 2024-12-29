@@ -17,7 +17,7 @@
     <p>Our mission is to connect loving families with pets in need.</p>
     <p class="typewriter"></p>
     <div class="login-or-signup">
-        <button class="btn-login" onclick="redirectTo('login')">Login</button>
+        <button class="btn-login" onclick="redirectTo('login')">Log In</button>
         <button class="btn-signup" onclick="redirectTo('signup')">Sign Up</button>
     </div>
     <footer>
@@ -40,9 +40,9 @@
 
         function redirectTo(page) {
             if (page === 'login') {
-                window.location.href = 'login.html';
+                window.location.href = 'login.php';
             } else if (page === 'signup') {
-                window.location.href = 'signup.html';
+                window.location.href = 'signup.php';
             }
         }
 

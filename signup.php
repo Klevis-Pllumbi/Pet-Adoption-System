@@ -1,3 +1,7 @@
+<?php
+/** @var mysqli $connection */
+require "connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +62,107 @@
     <div class="password-confirm-error errors" id="password-confirm-error">
         <p>The confirmed password is not the same as the first.</p>
     </div>
+    <?php
+    session_start();
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    //Load Composer's autoloader
+    require 'vendor/autoload.php';
+    function sendVerificationEmail(string $email, string $name, string $verification_token) {
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'pllumbiklevis1@gmail.com';
+            $mail->Password = 'kxmm fbtl uocx zlit';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+
+            $mail->setFrom('pllumbiklevis1@gmail.com', $name);
+            $mail->addAddress($email);
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Verification Email';
+            $template = "<h2>You have been signed up!</h2>
+                              <p>Verify your email with the link below.</p>
+                              <br>
+                              <a href='http://localhost/Pet%20Adoption%20System/verify-email.php?token=$verification_token'>Click me</a>";
+
+            $mail->Body = $template;
+
+            $mail->send();
+        } catch (Exception $e) {
+            echo "Error occurred sending email: {$mail->ErrorInfo}";
+        }
+    }
+
+    if (isset($_POST['submit'])) {
+
+        $name = htmlspecialchars(trim($_POST['name']));
+        $surname = htmlspecialchars(trim($_POST['surname']));
+        $email = trim($_POST['email']);
+        $password = htmlspecialchars(trim($_POST['password']));
+        $passwordConfirm = htmlspecialchars(trim($_POST['password-confirm']));
+        $verification_token = md5(uniqid(rand(), true));
+
+        $errors = [];
+
+        // Validations
+        if (!preg_match('/^[a-zA-Z ]+$/', $name)) {
+            $errors[] = "Only letters and white space allowed in name.";
+        }
+        if (!preg_match('/^[a-zA-Z ]+$/', $surname)) {
+            $errors[] = "Only letters and white space allowed in surname.";
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Invalid email address.";
+        }
+        if ($password !== $passwordConfirm) {
+            $errors[] = "Passwords do not match.";
+        }
+        if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password)) {
+            $errors[] = "Password does not meet criteria.";
+        }
+
+        $result = mysqli_query($connection, "SELECT * FROM users WHERE email = '$email'");
+        if(mysqli_num_rows($result) > 0) {
+            $errors[] = "That email already exists.";
+        }
+
+        if (empty($errors)) {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            $query = "INSERT INTO users (name, surname, email, password, verification_token) 
+                      VALUES ('$name', '$surname', '$email', '$hashedPassword', '$verification_token')";
+            $result = mysqli_query($connection, $query);
+            if(!$result) {
+                $errors[] = "Something went wrong.";
+            }
+            $_SESSION["email"] = $email;
+            sendVerificationEmail($email, $name, $verification_token);
+            $errors[] = "Please check your email for a verification link.";
+        }
+
+        if(!empty($errors)) {
+            foreach ($errors as $error) {
+                echo "<div class='errors show'><p>$error</p></div>";
+            }
+        }
+
+        mysqli_close($connection);
+    }
+    ?>
 </div>
+<script>
+    const elementsToHide = document.getElementsByClassName("show");
+    setTimeout(() => {
+        Array.from(elementsToHide).forEach((el) => el.classList.remove("show"))
+    }, 5500);
+</script>
 <script src="validations.js"></script>
 <script src="signupValidations.js"></script>
 </body>

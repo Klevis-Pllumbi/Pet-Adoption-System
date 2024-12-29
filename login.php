@@ -1,4 +1,7 @@
-
+<?php
+/** @var mysqli $connection */
+require "connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +26,9 @@
             <input type="password" name="password" id="password" placeholder=" " required>
             <label for="password">Password</label>
         </div>
+        <div class="checkbox-container">
+            <input type="checkbox" value="remember_me" id="remember_me">
+            <label for="remember_me">Remember me</label></div>
         <button type="submit" name="submit" id="login">Log In</button>
     </form>
     <a href="forgotten-password.php">Forgotten Password</a>
@@ -39,7 +45,16 @@
                 Contains at least one digit.<br>
                 Contains at least one special character (e.g., @, #, $, etc.).</p>
         </div>
+        <?php
+
+        ?>
     </div>
+    <script>
+        const elementsToHide = document.getElementsByClassName("show");
+        setTimeout(() => {
+            Array.from(elementsToHide).forEach((el) => el.classList.remove("show"))
+        }, 5500);
+    </script>
     <script src="validations.js"></script>
     <script src="loginValidations.js"></script>
 </body>

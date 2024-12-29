@@ -11,38 +11,33 @@ const passwordConfirm = document.getElementById("password-confirm");
 const passwordConfirmError = document.getElementById("password-confirm-error");
 
 const validateSignupForm = (event) => {
-    event.preventDefault();
 
     manageInputs([name, surname, email, password, passwordConfirm]);
 
-    let formIsValid = true;
-
     if(!isValidNameOrSurname(name)) {
         showError(name, nameError);
-        formIsValid = false;
+        event.preventDefault();
     }
 
     if(!isValidNameOrSurname(surname)) {
         showError(surname, surnameError);
-        formIsValid = false;
+        event.preventDefault();
     }
 
     if(!isValidEmail(email)) {
         showError(email, emailError);
-        formIsValid = false;
+        event.preventDefault();
     }
 
     if(!isValidPassword(password)) {
         showError(password, passwordError);
-        formIsValid = false;
+        event.preventDefault();
     }
 
     if(!checkEqualityOfPasswords(password, passwordConfirm)) {
         showError(passwordConfirm, passwordConfirmError);
-        formIsValid = false;
-    }
-
-    if (formIsValid) {
-        this.submit();
+        event.preventDefault();
     }
 }
+
+signupForm.addEventListener("submit", validateSignupForm);

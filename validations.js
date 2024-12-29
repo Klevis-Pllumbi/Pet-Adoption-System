@@ -1,4 +1,3 @@
-const signupForm = document.getElementById("signup-form");
 
 const isValidNameOrSurname = (element) => {
     return /^[a-zA-Z\s]+$/.test(element.value.trim());
@@ -20,7 +19,7 @@ const showError = (element, elementError) => {
     element.classList.add("error");
     element.parentElement.lastElementChild.classList.add("error");
     elementError.classList.add("show");
-    setTimeout(() => {elementError.classList.remove("show")}, 7500);
+    setTimeout(() => elementError.classList.remove("show"), 5500);
 }
 
 const manageInputs = (inputs) => {

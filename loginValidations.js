@@ -6,24 +6,16 @@ const passwordError = document.getElementById("password-error");
 
 const validateLoginForm = (event) => {
 
-    event.preventDefault();
-
     manageInputs([email, password]);
-
-    let formIsValid = true;
 
     if(!isValidEmail(email)) {
         showError(email, emailError);
-        formIsValid = false;
+        event.preventDefault();
     }
 
     if(!isValidPassword(password)) {
         showError(password, passwordError);
-        formIsValid = false;
-    }
-
-    if (formIsValid) {
-        this.submit();
+        event.preventDefault();
     }
 }
 
