@@ -63,33 +63,34 @@ require "connection.php";
         <p>The confirmed password is not the same as the first.</p>
     </div>
     <?php
-    session_start();
+
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
     //Load Composer's autoloader
     require 'vendor/autoload.php';
-
     require_once __DIR__ . '/vendor/autoload.php';
 
     use Dotenv\Dotenv;
+
     // Load environment variables
     $dotenv = Dotenv::createImmutable(__DIR__);
     $dotenv->load();
+
     function sendVerificationEmail(string $email, string $name, string $verification_token) {
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
 
-            $mail->Host = $_ENV['SMTP_HOST'];
-            $mail->SMTPAuth = true;
             $mail->Username = $_ENV['SMTP_USER'];
             $mail->Password = $_ENV['SMTP_PASS'];
-            $mail->SMTPSecure = $_ENV['SMTP_ENCRYPTION'];
+            $mail->SMTPAuth = true;
+            $mail->Host = $_ENV['SMTP_HOST'];
             $mail->Port = $_ENV['SMTP_PORT'];
+            $mail->SMTPSecure = $_ENV['SMTP_ENCRYPTION'];
 
-            $mail->setFrom('pllumbiklevis1@gmail.com', $name);
+            $mail->setFrom($_ENV['SMTP_USER'], $name);
             $mail->addAddress($email);
 
             $mail->isHTML(true);
@@ -102,8 +103,9 @@ require "connection.php";
             $mail->Body = $template;
 
             $mail->send();
+            return true;
         } catch (Exception $e) {
-            echo "Error occurred sending email: {$mail->ErrorInfo}";
+            return false;
         }
     }
 
@@ -119,6 +121,9 @@ require "connection.php";
         $errors = [];
 
         // Validations
+        if(empty($name) || empty($surname) || empty($email) || empty($password) || empty($passwordConfirm)) {
+            $errors[] = "All fields are required.";
+        }
         if (!preg_match('/^[a-zA-Z ]+$/', $name)) {
             $errors[] = "Only letters and white space allowed in name.";
         }
@@ -140,6 +145,10 @@ require "connection.php";
             $errors[] = "That email already exists.";
         }
 
+        if(!sendVerificationEmail($email, $name, $verification_token)) {
+            $errors[] = "Something went wrong sending email verification link.";
+        }
+
         if (empty($errors)) {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -149,8 +158,7 @@ require "connection.php";
             if(!$result) {
                 $errors[] = "Something went wrong.";
             }
-            $_SESSION["email"] = $email;
-            sendVerificationEmail($email, $name, $verification_token);
+
             $errors[] = "Please check your email for a verification link.";
         }
 

@@ -12,11 +12,6 @@ const validateLoginForm = (event) => {
         showError(email, emailError);
         event.preventDefault();
     }
-
-    if(!isValidPassword(password)) {
-        showError(password, passwordError);
-        event.preventDefault();
-    }
 }
 
 loginForm.addEventListener("submit", validateLoginForm);
