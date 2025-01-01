@@ -14,7 +14,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Righteous&amp;display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="icon.png">
     <link rel="stylesheet" href="style.css">
-    <title>Log In</title>
+    <title>FurEver Home | Log In</title>
 </head>
 <body>
     <img class="logo" src="logo.png" alt="Logo image" width="180" height="180"></img>

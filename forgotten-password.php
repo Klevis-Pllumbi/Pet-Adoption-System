@@ -1,7 +1,6 @@
 <?php
 /** @var mysqli $connection */
 require "connection.php";
-session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +13,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Righteous&amp;display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="icon.png">
     <link rel="stylesheet" href="style.css">
-    <title>Forgotten Password</title>
+    <title>FurEver Home | Forgotten Password</title>
 </head>
 <body>
 <img class="logo" src="logo.png" alt="Logo image" width="180" height="180"></img>
@@ -29,7 +28,7 @@ session_start();
     </div>
     <div class="form-group">
         <input type="password" name="password-confirm" id="password-confirm" placeholder=" " required>
-        <label for="password">Confirm New Password</label>
+        <label for="password-confirm">Confirm New Password</label>
     </div>
     <button type="submit" name="submit" id="change">Change</button>
 </form>
@@ -56,7 +55,6 @@ session_start();
 
     //Load Composer's autoloader
     require 'vendor/autoload.php';
-    require_once __DIR__ . '/vendor/autoload.php';
 
     use Dotenv\Dotenv;
 

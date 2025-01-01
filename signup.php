@@ -13,7 +13,7 @@ require "connection.php";
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Righteous&amp;display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="icon.png">
     <link rel="stylesheet" href="style.css">
-    <title>Sign Up</title>
+    <title>FurEver Home | Sign Up</title>
 </head>
 <body>
 <img class="logo" src="logo.png" alt="Logo image" width="180" height="180"></img>
@@ -70,7 +70,6 @@ require "connection.php";
 
     //Load Composer's autoloader
     require 'vendor/autoload.php';
-    require_once __DIR__ . '/vendor/autoload.php';
 
     use Dotenv\Dotenv;
 
@@ -145,10 +144,6 @@ require "connection.php";
             $errors[] = "That email already exists.";
         }
 
-        if(!sendVerificationEmail($email, $name, $verification_token)) {
-            $errors[] = "Something went wrong sending email verification link.";
-        }
-
         if (empty($errors)) {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -159,7 +154,14 @@ require "connection.php";
                 $errors[] = "Something went wrong.";
             }
 
-            $errors[] = "Please check your email for a verification link.";
+        }
+
+        if(empty($errors)) {
+            if(!sendVerificationEmail($email, $name, $verification_token)) {
+                $errors[] = "Something went wrong sending email verification link.";
+            } else {
+                $errors[] = "Please check your email for a verification link.";
+            }
         }
 
         if(!empty($errors)) {

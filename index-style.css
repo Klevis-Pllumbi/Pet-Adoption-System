@@ -33,6 +33,14 @@ footer {
     margin: auto auto 20px;
 }
 
+footer p {
+    font-size: 20px;
+}
+
+footer a {
+    color: burlywood;
+}
+
 .login-or-signup {
     position: absolute;
     top: 20px;

@@ -10,18 +10,20 @@
     <link rel="icon" type="image/x-icon" href="icon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="index-style.css">
-    <title>Pet Adoption System</title>
+    <title>FurEver Home</title>
 </head>
 <body>
-    <h1>Welcome to <span>Pet Adoption System</span></h1>
-    <p>Our mission is to connect loving families with pets in need.</p>
+    <h1>Welcome to <span>FurEver Home</span></h1>
+    <p>Our mission is to connect loving families with pets in need to give them a 'furever' home.</p>
     <p class="typewriter"></p>
     <div class="login-or-signup">
         <button class="btn-login" onclick="redirectTo('login')">Log In</button>
         <button class="btn-signup" onclick="redirectTo('signup')">Sign Up</button>
     </div>
     <footer>
-        &copy; 2024 Pet Adoption System. All Rights Reserved.
+        <p>Cel: 068 367 8406</p>
+        <p>Email: <a href="mailto:pllumbiklevis1@gmail.com">pllumbiklevis1@gmail.com</a></p>
+        <p>&copy; 2024 Pet Adoption System. All Rights Reserved.</p>
     </footer>
 
     <script>

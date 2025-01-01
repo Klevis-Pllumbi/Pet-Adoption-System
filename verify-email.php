@@ -27,4 +27,3 @@ if(isset($_GET["token"])) {
         }
     }
 }
-?>
