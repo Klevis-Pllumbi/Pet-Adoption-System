@@ -1,32 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Righteous&amp;display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="icon.png">
-    <link rel="stylesheet" href="style.css">
+    <?php require 'links.php' ?>
     <title>FurEver Home | Home</title>
 </head>
 <body>
 
-    <div class="navbar">
-        <div class="logo">
-            <img src="icon.png" alt="logo">
-            <h1>FurEver Home</h1>
-        </div>
-        <div class="menu">
-            <a href="home.php" class="nav">Home</a>
-            <a href="profile.php" class="nav">Profile</a>
-            <a href="donate.php" class="nav">Donate</a>
-            <a href="give-up-for-adoption.php" class="nav">Give Up For Adoption</a>
-            <a href="report.php" class="nav">Report</a>
-            <a href="index.php" class="nav">Contact</a>
-        </div>
-    </div>
+    <?php require 'navbar.php' ?>
 
     <div class="search-bar">
         <p>Filter : </p>
@@ -36,64 +16,70 @@
         <button type="button" id="other" name="other">Others</button>
     </div>
 
-    <div class="pet-card-container">
-        <div class="pet-card">
+    <div class="card-container">
+        <div class="card">
             <img src="background.jpg" alt="">
             <div class="details">
                 <p>Name: <span>Bonnie</span></p>
                 <p>Gender: <span>Female</span></p>
                 <p>Age: <span>6 years</span></p>
-                <p>Price: <span>50</span></p>
+                <p>Price: <span>$50</span></p>
+                <p><a href="details.php"><span>Other details</span></a></p>
             </div>
             <button type="button" id="id" name="id">Adopt Me</button>
         </div>
-        <div class="pet-card">
+        <div class="card">
             <img src="background.jpg" alt="">
             <div class="details">
                 <p>Name: <span>Bonnie</span></p>
                 <p>Gender: <span>Female</span></p>
                 <p>Age: <span>6 years</span></p>
                 <p>Price: <span>Free</span></p>
+                <p><a href=""><span>Other details</span></a></p>
             </div>
             <button type="button" id="id" name="id">Adopt Me</button>
         </div>
-        <div class="pet-card">
+        <div class="card">
             <img src="background.jpg" alt="">
             <div class="details">
                 <p>Name: <span>Bonnie</span></p>
                 <p>Gender: <span>Female</span></p>
                 <p>Age: <span>6 years</span></p>
                 <p>Price: <span>$30</span></p>
+                <p><a href=""><span>Other details</span></a></p>
             </div>
             <button type="button" id="id" name="id">Adopt Me</button>
         </div>
-        <div class="pet-card">
+        <div class="card">
             <img src="background.jpg" alt="">
             <div class="details">
                 <p>Name: <span>Bonnie</span></p>
                 <p>Gender: <span>Female</span></p>
                 <p>Age: <span>6 years</span></p>
                 <p>Price: <span>$30</span></p>
+                <p><a href=""><span>Other details</span></a></p>
             </div>
             <button type="button" id="id" name="id">Adopt Me</button>
         </div>
-        <div class="pet-card">
+        <div class="card">
             <img src="background.jpg" alt="">
             <div class="details">
                 <p>Name: <span>Bonnie</span></p>
                 <p>Gender: <span>Female</span></p>
                 <p>Age: <span>6 years</span></p>
                 <p>Price: <span>$30</span></p>
+                <p><a href=""><span>Other details</span></a></p>
             </div>
             <button type="button" id="id" name="id">Adopt Me</button>
         </div>
-        <div class="pet-card">
+        <div class="card">
             <img src="background.jpg" alt="">
             <div class="details">
                 <p>Name: <span>Bonnie</span></p>
                 <p>Gender: <span>Female</span></p>
                 <p>Age: <span>6 years</span></p>
                 <p>Price: <span>$30</span></p>
+                <p><a href=""><span>Other details</span></a></p>
             </div>
             <button type="button" id="id" name="id">Adopt Me</button>
         </div>

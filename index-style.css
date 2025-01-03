@@ -2,7 +2,7 @@ body{
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 0;
+    padding: 0 150px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(107, 71, 46, 0.6)), url(background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -14,7 +14,6 @@ body{
 
 p {
     font-size: 30px;
-    padding: 0 150px;
     margin: 0;
     text-align: center;
 }

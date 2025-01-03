@@ -47,10 +47,9 @@ form {
     align-items: center;
     justify-content: center;
     gap: 25px;
-    width: 300px;
     box-shadow: 0 0 20px rgba(205, 133, 63, 0.2);
     backdrop-filter: blur(70px);
-    padding: 25px;
+    padding: 25px 50px;
     border-radius: 15px;
 }
 
@@ -256,11 +255,12 @@ input[type="checkbox"]:hover {
     height: 100%;
     padding: 0 20px;
     font-weight: bolder;
+    transition: background-color 0.6s ease
 }
 
 .nav:hover {
     text-decoration: none;
-    background-color: rgba(205, 133, 63, 0.3);
+    background-color: rgba(205, 133, 63, 0.6);
     color: wheat;
     cursor: pointer;
 }
@@ -271,7 +271,7 @@ input[type="checkbox"]:hover {
     align-items: center;
     justify-content: space-evenly;
     height: 60px;
-    width: 350px;
+    min-width: 350px;
     position: absolute;
     top: 70px;
     left: 15px;
@@ -282,7 +282,7 @@ input[type="checkbox"]:hover {
     width: 60px;
 }
 
-.pet-card-container {
+.card-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -294,20 +294,20 @@ input[type="checkbox"]:hover {
     padding-bottom: 30px;
 }
 
-.pet-card {
+.card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 345px;
-    height: 355px;
+    min-height: 360px;
     box-shadow: 0 0 20px rgba(205, 133, 63, 0.2);
     backdrop-filter: blur(70px);
     border-radius: 15px;
     overflow: hidden;
 }
 
-.pet-card img {
+.card img {
     width: 100%;
     height: 60%;
     object-fit: cover;
@@ -323,14 +323,13 @@ input[type="checkbox"]:hover {
     left: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, auto);
     gap: 5px;
     margin: auto;
 }
 
-.pet-card button {
+.card button {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     border-radius: 50px;
     width: 110px;
 }
@@ -344,16 +343,21 @@ footer {
     margin: auto auto 20px;
 }
 
-.profile-container {
+.container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 80px;
+    margin-top: 75px;
+    box-shadow: 0 0 20px rgba(205, 133, 63, 0.2);
+    backdrop-filter: blur(70px);
+    border-radius: 15px;
+    padding: 40px;
 }
 
-.profile-image {
+.photo-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -367,7 +371,7 @@ footer {
     overflow: hidden;
 }
 
-.profile-image img {
+.photo-container img {
     width: 100%;
     height: 80%;
     object-fit: cover;
@@ -375,21 +379,19 @@ footer {
     top: 0;
 }
 
-.profile-image button {
+.photo-container button {
     margin: auto auto 15px;
 }
 
 .profile-details {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    height: 390px;
     align-items: flex-start;
     justify-content: center;
     gap: 40px;
 }
 
-.change {
+.update-details {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -402,12 +404,134 @@ footer {
     gap: 10px;
 }
 
-.profile-container button {
+.container button {
     width: 200px;
     border-radius: 30px;
 }
 
-.change .form-group {
+.update-details .form-group {
     margin-top: 12px;
     display: none;
+}
+
+#give-up-for-adoption-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-top: 60px;
+    padding-bottom: 70px;
+}
+
+.pet-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 0 20px rgba(205, 133, 63, 0.2);
+    backdrop-filter: blur(70px);
+    padding: 25px 50px;
+    border-radius: 15px;
+}
+
+.pet-information h3 {
+    margin: 0;
+}
+
+select {
+    padding: 10px;
+    font-size: 20px;
+    width: 250px;
+    border: none;
+    border-bottom: 2px solid rgba(205, 133, 63, 0.3);
+    border-radius: 5px;
+    outline: none;
+    background: none;
+    font-family: "Poiret One", sans-serif;
+    color: olive;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: olive;
+}
+
+option {
+    background-color: blanchedalmond;
+}
+
+textarea {
+    padding: 10px;
+    font-size: 20px;
+    width: 230px;
+    min-height: 100px;
+    border: 2px solid rgba(205, 133, 63, 0.3);
+    border-radius: 5px;
+    outline: none;
+    background: none;
+    font-family: "Poiret One", sans-serif;
+    color: olive;
+}
+
+textarea::placeholder {
+    color: olive;
+}
+
+textarea:focus {
+    border-color: olive;
+}
+
+#give-up-for-adoption-form #submit {
+    position: absolute;
+    bottom: 20px;
+}
+
+#report-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-top: 60px;
+    padding-bottom: 70px;
+}
+
+#report-form #submit {
+    position: absolute;
+    bottom: 20px;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+}
+
+.other-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(205, 133, 63, 0.2);
+    backdrop-filter: blur(70px);
+    border-radius: 15px;
+    padding: 20px;
+    gap: 10px;
+}
+
+#pets-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-top: 60px;
+    padding-bottom: 70px;
+}
+
+#pets-form #submit {
+    position: absolute;
+    bottom: 20px;
 }

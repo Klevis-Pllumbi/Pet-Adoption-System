@@ -6,14 +6,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Righteous&amp;display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="icon.png">
-    <link rel="stylesheet" href="style.css">
+    <?php require 'links.php' ?>
     <title>FurEver Home | Log In</title>
 </head>
 <body>
@@ -29,7 +22,8 @@ session_start();
         </div>
         <div class="checkbox-container">
             <input type="checkbox" value="remember_me" id="remember_me" name="remember_me">
-            <label for="remember_me">Remember me</label></div>
+            <label for="remember_me">Remember me</label>
+        </div>
         <button type="submit" name="submit" id="login">Log In</button>
     </form>
     <a href="forgotten-password.php">Forgotten Password</a>

@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <?php require 'links.php' ?>
-    <title>FurEver Home | Give up for Adoption</title>
+    <title>FurEver Home | Pets</title>
 </head>
 <body>
 
-<?php require 'navbar.php' ?>
+<?php require 'admin-navbar.php' ?>
 
-<form action="give-up-for-adoption.php" method="post" id="give-up-for-adoption-form">
+<form action="pets.php" method="post" id="pets-form">
     <div class="photo-container">
         <img src="logo.png" alt="profile" id="profile-picture"></img>
         <input type="file" name="file-input" id="file-input" accept="image/*" style="display: none" required>
@@ -41,14 +41,14 @@
             <option value="3">Test 3</option>
         </select>
         <div class="form-group">
+            <input type="number" name="price" id="price" placeholder=" " required>
+            <label for="price">Price</label>
+        </div>
+        <div class="form-group">
             <textarea name="description" id="description" placeholder="Other descriptions..." required></textarea>
         </div>
-        <div class="checkbox-container" style="margin-left: 0;">
-            <input type="checkbox" value="surrender" id="surrender" name="surrender">
-            <label for="surrender" style="font-size: 20px; color: olive;">Surrender</label>
-        </div>
     </div>
-    <button type="submit" name="submit" id="submit">Submit</button>
+    <button type="submit" name="submit" id="submit">Add</button>
 </form>
 
 </body>
