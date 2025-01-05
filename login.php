@@ -100,7 +100,11 @@ session_start();
                                     }
                                     setcookie('remember_me', $rememberToken, time() + (86400 * 30), "/");
                                 }
-                                header("Location: home.php");
+                                if($user["role"] == "user") {
+                                    header("Location: home.php");
+                                } else {
+                                    header("Location: admin-home.php");
+                                }
                             }
                         }
                     }

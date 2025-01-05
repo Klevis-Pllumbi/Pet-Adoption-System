@@ -55,7 +55,7 @@ require "connection.php";
     $dotenv = Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 
-    function sendVerificationEmail(string $email, string $name, string $verification_token) {
+    function sendVerificationEmail(string $email, string $verification_token) {
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
@@ -67,7 +67,7 @@ require "connection.php";
             $mail->Port = $_ENV['SMTP_PORT'];
             $mail->SMTPSecure = $_ENV['SMTP_ENCRYPTION'];
 
-            $mail->setFrom($_ENV['SMTP_USER'], $name);
+            $mail->setFrom($_ENV['SMTP_USER'], "FurEver Home");
             $mail->addAddress($email);
 
             $mail->isHTML(true);
@@ -115,7 +115,7 @@ require "connection.php";
         if(!$user) {
             $errors[] = "That email does not exist.";
         } else {
-            if(!sendVerificationEmail($email, $user["name"], $verification_token)) {
+            if(!sendVerificationEmail($email, $verification_token)) {
                 $errors[] = "Something went wrong sending email verification link.";
             }
         }

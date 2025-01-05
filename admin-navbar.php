@@ -5,7 +5,7 @@
     </div>
     <div class="menu">
         <a href="admin-home.php" class="nav">Home</a>
-        <a href="pets.php" class="nav">Pets</a>
+        <a href="add-pet.php" class="nav">Add Pet</a>
         <a href="reports.php" class="nav">Reports</a>
         <a href="surrender-requests.php" class="nav">Surrender Requests</a>
         <a href="donations.php" class="nav">Donations</a>

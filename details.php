@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php require 'links.php' ?>
-    <title>FurEver Home | Home</title>
+    <title>FurEver Home | Details</title>
     <style>
         img {
             border-radius: 10px;

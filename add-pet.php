@@ -8,7 +8,7 @@
 
 <?php require 'admin-navbar.php' ?>
 
-<form action="pets.php" method="post" id="pets-form">
+<form action="add-pet.php" method="post" id="pets-form">
     <div class="photo-container">
         <img src="logo.png" alt="profile" id="profile-picture"></img>
         <input type="file" name="file-input" id="file-input" accept="image/*" style="display: none" required>
@@ -25,7 +25,7 @@
             <label for="age">Age</label>
         </div>
         <select name="select-specie" id="select-specie" required>
-            <option value="" disabled selected>Specie</option>
+            <option value="" disabled selected>Species</option>
             <option value="1">Cat</option>
             <option value="2">Dog</option>
             <option value="3">Other</option>

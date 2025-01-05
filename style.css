@@ -328,10 +328,18 @@ input[type="checkbox"]:hover {
 }
 
 .card button {
-    position: absolute;
-    bottom: 15px;
     border-radius: 50px;
     width: 110px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 12px;
 }
 
 span {

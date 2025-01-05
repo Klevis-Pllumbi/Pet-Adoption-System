@@ -31,7 +31,10 @@
             <p><a href=""><span>Other details</span></a></p>
             <p>Surrendered by: <span>User1</span></p>
         </div>
-        <button type="button" id="id" name="id">Approve</button>
+        <div class="buttons">
+            <button type="button" id="approve-id" name="approve-id">Approve</button>
+            <button type="button" id="reject-id" name="reject-id">Reject</button>
+        </div>
     </div>
     <div class="card">
         <img src="background.jpg" alt="">
@@ -42,7 +45,10 @@
             <p><a href=""><span>Other details</span></a></p>
             <p>Surrendered by: <span>User1</span></p>
         </div>
-        <button type="button" id="id" name="id">Approve</button>
+        <div class="buttons">
+            <button type="button" id="approve-id" name="approve-id">Approve</button>
+            <button type="button" id="reject-id" name="reject-id">Reject</button>
+        </div>
     </div>
 </div>
 </body>

@@ -25,7 +25,7 @@
             <label for="age">Age</label>
         </div>
         <select name="select-specie" id="select-specie" required>
-            <option value="" disabled selected>Specie</option>
+            <option value="" disabled selected>Species</option>
             <option value="1">Cat</option>
             <option value="2">Dog</option>
             <option value="3">Other</option>

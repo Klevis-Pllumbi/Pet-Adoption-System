@@ -31,15 +31,9 @@
             <p>Price: <span>Free</span></p>
             <p>Requested by: <span>User1</span></p>
         </div>
-    </div>
-    <div class="card">
-        <img src="background.jpg" alt="">
-        <div class="details">
-            <p>Name: <span>Bonnie</span></p>
-            <p>Gender: <span>Female</span></p>
-            <p>Age: <span>6 years</span></p>
-            <p>Price: <span>$50</span></p>
-            <p>Requested by: <span>User1</span></p>
+        <div class="buttons">
+            <button type="button" id="approve-id" name="approve-id">Approve</button>
+            <button type="button" id="reject-id" name="reject-id">Reject</button>
         </div>
     </div>
     <div class="card">
@@ -50,6 +44,24 @@
             <p>Age: <span>6 years</span></p>
             <p>Price: <span>$50</span></p>
             <p>Requested by: <span>User1</span></p>
+        </div>
+        <div class="buttons">
+            <button type="button" id="approve-id" name="approve-id">Approve</button>
+            <button type="button" id="reject-id" name="reject-id">Reject</button>
+        </div>
+    </div>
+    <div class="card">
+        <img src="background.jpg" alt="">
+        <div class="details">
+            <p>Name: <span>Bonnie</span></p>
+            <p>Gender: <span>Female</span></p>
+            <p>Age: <span>6 years</span></p>
+            <p>Price: <span>$50</span></p>
+            <p>Requested by: <span>User1</span></p>
+        </div>
+        <div class="buttons">
+            <button type="button" id="approve-id" name="approve-id">Approve</button>
+            <button type="button" id="reject-id" name="reject-id">Reject</button>
         </div>
     </div>
     <div class="card">
@@ -61,15 +73,9 @@
             <p>Price: <span>Free</span></p>
             <p>Requested by: <span>User1</span></p>
         </div>
-    </div>
-    <div class="card">
-        <img src="background.jpg" alt="">
-        <div class="details">
-            <p>Name: <span>Bonnie</span></p>
-            <p>Gender: <span>Female</span></p>
-            <p>Age: <span>6 years</span></p>
-            <p>Price: <span>$50</span></p>
-            <p>Requested by: <span>User1</span></p>
+        <div class="buttons">
+            <button type="button" id="approve-id" name="approve-id">Approve</button>
+            <button type="button" id="reject-id" name="reject-id">Reject</button>
         </div>
     </div>
     <div class="card">
@@ -80,6 +86,24 @@
             <p>Age: <span>6 years</span></p>
             <p>Price: <span>$50</span></p>
             <p>Requested by: <span>User1</span></p>
+        </div>
+        <div class="buttons">
+            <button type="button" id="approve-id" name="approve-id">Approve</button>
+            <button type="button" id="reject-id" name="reject-id">Reject</button>
+        </div>
+    </div>
+    <div class="card">
+        <img src="background.jpg" alt="">
+        <div class="details">
+            <p>Name: <span>Bonnie</span></p>
+            <p>Gender: <span>Female</span></p>
+            <p>Age: <span>6 years</span></p>
+            <p>Price: <span>$50</span></p>
+            <p>Requested by: <span>User1</span></p>
+        </div>
+        <div class="buttons">
+            <button type="button" id="approve-id" name="approve-id">Approve</button>
+            <button type="button" id="reject-id" name="reject-id">Reject</button>
         </div>
     </div>
 </div>

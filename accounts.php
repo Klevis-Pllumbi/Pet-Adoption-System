@@ -32,7 +32,9 @@
             <p>Surrendered: <span>0</span></p>
             <p>Email: <a href="mailto:pllumbiklevis1@gmail.com"><span>pllumbiklevis1@gmail.com</span></a></p>
         </div>
-        <button type="button" id="id" name="id">Delete</button>
+        <div class="buttons">
+            <button type="button" id="id" name="id">Delete</button>
+        </div>
     </div>
     <div class="card">
         <img src="logo.png" alt="">
@@ -42,7 +44,9 @@
             <p>Surrendered: <span>0</span></p>
             <p>Email: <a href="mailto:pllumbiklevis1@gmail.com"><span>pllumbiklevis1@gmail.com</span></a></p>
         </div>
-        <button type="button" id="id" name="id">Delete</button>
+        <div class="buttons">
+            <button type="button" id="id" name="id">Delete</button>
+        </div>
     </div>
     <div class="card">
         <img src="logo.png" alt="">
@@ -52,7 +56,9 @@
             <p>Surrendered: <span>0</span></p>
             <p>Email: <a href="mailto:pllumbiklevis1@gmail.com"><span>pllumbiklevis1@gmail.com</span></a></p>
         </div>
-        <button type="button" id="id" name="id">Delete</button>
+        <div class="buttons">
+            <button type="button" id="id" name="id">Delete</button>
+        </div>
     </div>
     <div class="card">
         <img src="logo.png" alt="">
@@ -62,7 +68,9 @@
             <p>Surrendered: <span>0</span></p>
             <p>Email: <a href="mailto:pllumbiklevis1@gmail.com"><span>pllumbiklevis1@gmail.com</span></a></p>
         </div>
-        <button type="button" id="id" name="id">Delete</button>
+        <<div class="buttons">
+            <button type="button" id="id" name="id">Delete</button>
+        </div>
     </div>
     <div class="card">
         <img src="logo.png" alt="">
@@ -72,7 +80,9 @@
             <p>Surrendered: <span>0</span></p>
             <p>Email: <a href="mailto:pllumbiklevis1@gmail.com"><span>pllumbiklevis1@gmail.com</span></a></p>
         </div>
-        <button type="button" id="id" name="id">Delete</button>
+        <div class="buttons">
+            <button type="button" id="id" name="id">Delete</button>
+        </div>
     </div>
     <div class="card">
         <img src="logo.png" alt="">
@@ -82,7 +92,9 @@
             <p>Surrendered: <span>0</span></p>
             <p>Email: <a href="mailto:pllumbiklevis1@gmail.com"><span>pllumbiklevis1@gmail.com</span></a></p>
         </div>
-        <button type="button" id="id" name="id">Delete</button>
+        <div class="buttons">
+            <button type="button" id="id" name="id">Delete</button>
+        </div>
     </div>
 </div>
 </body>

@@ -28,7 +28,10 @@
             <p>Reported by: <a href="mailto:pllumbiklevis1@gmail.com"><span>pllumbiklevis1@gmail.com</span></a></p>
             <p>Location: <span>41.4973952, 20.0933376</span></p>
         </div>
-        <button type="button" id="id" name="id">Details</button>
+        <div class="buttons">
+            <button type="button" id="details-id" name="details-id">Details</button>
+            <button type="button" id="solved-id" name="solved-id">Solved</button>
+        </div>
     </div>
     <div class="card">
         <img src="background.jpg" alt="">
@@ -36,7 +39,10 @@
             <p>Reported by: <a href="mailto:pllumbiklevis1@gmail.com"><span>pllumbiklevis1@gmail.com</span></a></p>
             <p>Location: <span>41.4973952, 20.0933376</span></p>
         </div>
-        <button type="button" id="id" name="id">Details</button>
+        <div class="buttons">
+            <button type="button" id="details-id" name="details-id">Details</button>
+            <button type="button" id="solved-id" name="solved-id">Solved</button>
+        </div>
     </div>
     <div class="card">
         <img src="background.jpg" alt="">
@@ -44,7 +50,10 @@
             <p>Reported by: <a href="mailto:pllumbiklevis1@gmail.com"><span>pllumbiklevis1@gmail.com</span></a></p>
             <p>Location: <span>41.4973952, 20.0933376</span></p>
         </div>
-        <button type="button" id="id" name="id">Details</button>
+        <div class="buttons">
+            <button type="button" id="details-id" name="details-id">Details</button>
+            <button type="button" id="solved-id" name="solved-id">Solved</button>
+        </div>
     </div>
 </div>
 </body>

@@ -26,7 +26,9 @@
                 <p>Price: <span>$50</span></p>
                 <p><a href="details.php"><span>Other details</span></a></p>
             </div>
-            <button type="button" id="id" name="id">Adopt Me</button>
+            <div class="buttons">
+                <button type="button" id="id" name="id">Adopt Me</button>
+            </div>
         </div>
         <div class="card">
             <img src="background.jpg" alt="">
@@ -37,7 +39,9 @@
                 <p>Price: <span>Free</span></p>
                 <p><a href=""><span>Other details</span></a></p>
             </div>
-            <button type="button" id="id" name="id">Adopt Me</button>
+            <div class="buttons">
+                <button type="button" id="id" name="id">Adopt Me</button>
+            </div>
         </div>
         <div class="card">
             <img src="background.jpg" alt="">
@@ -48,7 +52,9 @@
                 <p>Price: <span>$30</span></p>
                 <p><a href=""><span>Other details</span></a></p>
             </div>
-            <button type="button" id="id" name="id">Adopt Me</button>
+            <div class="buttons">
+                <button type="button" id="id" name="id">Adopt Me</button>
+            </div>
         </div>
         <div class="card">
             <img src="background.jpg" alt="">
@@ -59,7 +65,9 @@
                 <p>Price: <span>$30</span></p>
                 <p><a href=""><span>Other details</span></a></p>
             </div>
-            <button type="button" id="id" name="id">Adopt Me</button>
+            <div class="buttons">
+                <button type="button" id="id" name="id">Adopt Me</button>
+            </div>
         </div>
         <div class="card">
             <img src="background.jpg" alt="">
@@ -70,7 +78,9 @@
                 <p>Price: <span>$30</span></p>
                 <p><a href=""><span>Other details</span></a></p>
             </div>
-            <button type="button" id="id" name="id">Adopt Me</button>
+            <div class="buttons">
+                <button type="button" id="id" name="id">Adopt Me</button>
+            </div>
         </div>
         <div class="card">
             <img src="background.jpg" alt="">
@@ -81,7 +91,9 @@
                 <p>Price: <span>$30</span></p>
                 <p><a href=""><span>Other details</span></a></p>
             </div>
-            <button type="button" id="id" name="id">Adopt Me</button>
+            <div class="buttons">
+                <button type="button" id="id" name="id">Adopt Me</button>
+            </div>
         </div>
     </div>
 </body>
