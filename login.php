@@ -97,6 +97,8 @@ session_start();
                                     $sql = "UPDATE users SET remember_token = '$rememberToken' WHERE email = '$email'";
                                     if(!mysqli_query($connection, $sql)) {
                                         $errors[] = "Database error happened.";
+                                        session_unset();
+                                        session_destroy();
                                     }
                                     setcookie('remember_me', $rememberToken, time() + (86400 * 30), "/");
                                 }
@@ -117,6 +119,7 @@ session_start();
                 }
             }
 
+            mysqli_close($connection);
         }
         ?>
     </div>

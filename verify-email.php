@@ -27,3 +27,5 @@ if(isset($_GET["token"])) {
         }
     }
 }
+
+mysqli_close($connection);

@@ -11,6 +11,10 @@ const isValidPassword = (element) => {
     return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(element.value.trim());
 }
 
+const checkAge = (element) => {
+    return /^(\d+)\s*(year|years|month|months)(\s*old)?\s*$/i.test(element.value.trim());
+}
+
 const checkEqualityOfPasswords = (pass, confPass) => {
     return pass.value.trim() === confPass.value.trim();
 }

@@ -10,5 +10,6 @@
         <a href="give-up-for-adoption.php" class="nav">Give Up For Adoption</a>
         <a href="report.php" class="nav">Report</a>
         <a href="index.php" class="nav">Contact</a>
+        <a href="logout.php" class="nav">Log Out</a>
     </div>
 </div>
