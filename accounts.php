@@ -26,33 +26,38 @@ authenticateUser($connection);
 
 <div class="search-bar">
     <div class="form-group">
-        <input type="text" name="name" id="name" placeholder=" " required>
-        <label for="name">Search</label>
+        <input type="text" name="search" id="search" placeholder=" " required>
+        <label for="search">Search</label>
     </div>
 </div>
 
-<div class="card-container">
+<div class="card-container" id="card-container">
     <?php
     $errors = [];
-    $sql = "SELECT id, name, surname, adopted, surrendered, email, profile_picture FROM `users`";
+    $id = $_SESSION['id'];
+    $sql = "SELECT id, name, surname, adopted, surrendered, email, profile_picture FROM `users` WHERE id != '$id'";
     if ($result = mysqli_query($connection, $sql)) {
-        while($user = mysqli_fetch_assoc($result)) { ?>
-    <div class="card">
-        <img src="<?php echo empty($user['profile_picture']) ? 'logo.png' : htmlspecialchars($user['profile_picture']) ?>" alt="<?php echo $user['name'] . '_profile_picture' ?>">
-        <div class="details">
-            <p>Name: <span><?php echo htmlspecialchars($user['name'] . " " . $user['surname']) ?></span></p>
-            <p>Adopted: <span><?php echo htmlspecialchars($user['adopted']) ?></span></p>
-            <p>Surrendered: <span><?php echo htmlspecialchars($user['surrendered']) ?></span></p>
-            <p>Email: <a href="mailto:<?php echo htmlspecialchars($user['email']) ?>"><span><?php echo htmlspecialchars($user['email']) ?></span></a></p>
-        </div>
-        <div class="buttons">
-            <button type="button" class="details-button" data-user-id="<?php echo htmlspecialchars($user['id']) ?>" name="details-<?php echo htmlspecialchars($user['id']) ?>">Details</button>
-            <button type="button" id="delete-<?php echo htmlspecialchars($user['id']) ?>" name="delete-<?php echo htmlspecialchars($user['id']) ?>">Delete</button>
-        </div>
-    </div>
-        <?php }
+        if (mysqli_num_rows($result) > 0) {
+            while($user = mysqli_fetch_assoc($result)) { ?>
+                <div class="card">
+                    <img src="<?php echo empty($user['profile_picture']) ? 'logo.png' : htmlspecialchars($user['profile_picture']) ?>" alt="<?php echo $user['name'] . '_profile_picture' ?>">
+                    <div class="details">
+                        <p>Name: <span><?php echo htmlspecialchars($user['name'] . " " . $user['surname']) ?></span></p>
+                        <p>Adopted: <span><?php echo htmlspecialchars($user['adopted']) ?></span></p>
+                        <p>Surrendered: <span><?php echo htmlspecialchars($user['surrendered']) ?></span></p>
+                        <p>Email: <a href="mailto:<?php echo htmlspecialchars($user['email']) ?>"><span><?php echo htmlspecialchars($user['email']) ?></span></a></p>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" class="details-button" data-user-id="<?php echo htmlspecialchars($user['id']) ?>" name="details-<?php echo htmlspecialchars($user['id']) ?>">Details</button>
+                        <button type="button" class="delete-button" data-user-id="<?php echo htmlspecialchars($user['id']) ?>" name="delete-<?php echo htmlspecialchars($user['id']) ?>">Delete</button>
+                    </div>
+                </div>
+            <?php }
+        } else {
+            $errors[] = "No results found";
+        }
     } else {
-        $errors = "Database error occurred";
+        $errors[] = "Database error occurred";
     }
     ?>
 </div>
@@ -63,6 +68,8 @@ authenticateUser($connection);
             echo "<div class='errors show'><p>$error</p></div>";
         }
     }
+    session_unset();
+    session_destroy();
     mysqli_close($connection);
     ?>
 </div>
@@ -73,16 +80,42 @@ authenticateUser($connection);
     }, 5500);
 </script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const detailButtons = document.querySelectorAll(".details-button");
+    document.getElementById('card-container').addEventListener('click', function (e) {
+        if (e.target && e.target.classList.contains('details-button')) {
+            const userId = e.target.getAttribute('data-user-id');
+            window.location.href = `details.php?user_id=${userId}`;
+        }
+    });
 
-        detailButtons.forEach(button => {
-            button.addEventListener("click", function () {
-                const userId = this.getAttribute("data-user-id");
+    document.getElementById('card-container').addEventListener('click', function (e) {
+        if (e.target && e.target.classList.contains('delete-button')) {
+            const userId = e.target.getAttribute('data-user-id');
+            window.location.href = `delete.php?user_id=${userId}`;
+        }
+    });
+</script>
+<script>
+    document.getElementById('search').addEventListener('input', function () {
+        const query = this.value;
 
-                window.location.href = `details.php?user_id=${userId}`;
+        fetch('search-accounts.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'query=' + encodeURIComponent(query)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log('Response from server:', data);
+                document.getElementById('card-container').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
             });
-        });
     });
 </script>
 </body>
