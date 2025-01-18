@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const breedSelect = document.getElementById("select-breed");
 
     speciesSelect.addEventListener("change", function () {
-        const species = speciesSelect.value;
+        const species = speciesSelect.value === 'cat' ? 'cat_breeds' : 'dog_breeds';
 
         if (species !== 'other') {
             fetch(`getBreeds.php?species=${species}`)

@@ -45,11 +45,7 @@ function sendVerificationEmail(string $email, string $verification_token): bool 
 
 function authenticateUser($connection): bool {
 
-    if(isset($_SESSION['id'])) {
-        return true;
-    }
-
-    if(isset($_COOKIE['remember_me'])) {
+    if(isset($_SESSION['id']) || isset($_COOKIE['remember_me'])) {
         $token = $_COOKIE['remember_me'];
         $sql = "SELECT * FROM `users` WHERE `remember_token` = '$token'";
         $result = mysqli_query($connection, $sql);
@@ -57,6 +53,30 @@ function authenticateUser($connection): bool {
         if(mysqli_num_rows($result) > 0) {
             $user = mysqli_fetch_assoc($result);
             $_SESSION['id'] = $user['id'];
+
+            return true;
+        }
+    }
+
+    header("Location: login.php");
+    exit();
+
+}
+
+function authenticateAdmin($connection): bool {
+
+    if(isset($_SESSION['id']) || isset($_COOKIE['remember_me'])) {
+        $token = $_COOKIE['remember_me'];
+        $sql = "SELECT * FROM `users` WHERE `remember_token` = '$token'";
+        $result = mysqli_query($connection, $sql);
+
+        if(mysqli_num_rows($result) > 0) {
+            $user = mysqli_fetch_assoc($result);
+            $_SESSION['id'] = $user['id'];
+
+            if($user['role'] == 'user') {
+                header("Location: index.php");
+            }
 
             return true;
         }

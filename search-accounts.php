@@ -40,6 +40,4 @@ if(!empty($errors)) {
         echo "<div class='errors show'><p>$error</p></div>";
     }
 }
-session_unset();
-session_destroy();
 mysqli_close($connection);

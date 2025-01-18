@@ -171,7 +171,7 @@ input[type="checkbox"] {
     vertical-align: middle;
     width: 15px;
     height: 15px;
-    border: 1px solid olive;
+    border: 1px solid rgba(205, 133, 63, 0.3);
     border-radius: 4px;
     outline: none;
     cursor: pointer;
@@ -202,7 +202,63 @@ input[type="checkbox"]:hover {
 .checkbox-container label {
     margin: 0;
     padding: 0;
-    font-size: 16px;
+    font-size: 20px;
+    color: olive;
+}
+
+.radio-button-container {
+    display: flex;
+    gap: 20px;
+}
+
+/* Hide the default radio button */
+.radio-button input[type="radio"] {
+    display: none;
+}
+
+/* Custom radio button */
+.radio-button label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    color: olive;
+    display: flex;
+    align-items: center;
+}
+
+/* The circle */
+.radio-button label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    border: 1px solid rgba(205, 133, 63, 0.3);
+    border-radius: 50%;
+    background-color: antiquewhite;
+    box-sizing: border-box;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* The dot inside when selected */
+.radio-button input[type="radio"]:checked + label::before {
+    background-color: olive;
+    border-color: olive;
+}
+
+.radio-button input[type="radio"]:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 3px;
+    background-color: antiquewhite;
+    border-radius: 50%;
 }
 
 .navbar {
@@ -476,7 +532,7 @@ textarea {
     padding: 10px;
     font-size: 20px;
     width: 230px;
-    min-height: 100px;
+    min-height: 70px;
     border: 2px solid rgba(205, 133, 63, 0.3);
     border-radius: 5px;
     outline: none;
@@ -516,7 +572,7 @@ textarea:focus {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 40px;
+    gap: 15px;
 }
 
 .other-details {

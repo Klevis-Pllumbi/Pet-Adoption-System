@@ -61,6 +61,45 @@ authenticateUser($connection);
         <?php } else {
             $errors = "Database error occurred";
         }
+    } else if(isset($_GET['pet_id'])) {
+        $id = $_GET['pet_id'];
+        $sql = "SELECT pets.name, pets.gender, pets.age, pets.species, pets.breed, pets.pet_picture, pets.status, pets.adoption_fee, pets.description, users.name AS user_name, users.surname, users.email 
+                FROM pets 
+                INNER JOIN users ON pets.added_by = users.id 
+                WHERE pets.id = '$id'";
+        if($result = mysqli_query($connection, $sql)) {
+            $pet = mysqli_fetch_assoc($result); ?>
+            <img src="<?php echo empty($pet['pet_picture']) ? 'logo.png' : htmlspecialchars($pet['pet_picture']) ?>" alt="<?php echo $pet['name'] . '_profile_picture' ?>">
+            <div class="details-container">
+                <div class="other-details">
+                    <p>Name: <span><?php echo htmlspecialchars($pet['name']) ?></span></p>
+                </div>
+                <div class="other-details">
+                    <p>Gender: <span><?php echo htmlspecialchars($pet['gender']) ?></span></p>
+                </div>
+                <div class="other-details">
+                    <p>Age: <span><?php echo htmlspecialchars($pet['age']) ?></span></p>
+                </div>
+                <div class="other-details">
+                    <p>Species: <span><?php echo htmlspecialchars($pet['species']) ?></span></p>
+                </div>
+                <div class="other-details">
+                    <p>Breed: <span><?php echo htmlspecialchars($pet['breed']) ?></span></p>
+                </div>
+                <div class="other-details">
+                    <p>Status: <span><?php echo htmlspecialchars($pet['status']) ?></span></p>
+                </div>
+                <div class="other-details">
+                    <p>Adoption Fee: <span><?php echo htmlspecialchars($pet['adoption_fee']) ?></span></p>
+                </div>
+                <div class="other-details">
+                    <p>Other information: <span><?php echo htmlspecialchars($pet['description']) ?></span></p>
+                </div>
+                <div class="other-details">
+                    <p>Added by: <a href="mailto:<?php echo htmlspecialchars($pet['email']) ?>"><span><?php echo htmlspecialchars($pet['user_name']) . " " . htmlspecialchars($pet['surname']) ?></span></a></p>
+                </div>
+            </div>
+        <?php }
     }
     ?>
 </div>

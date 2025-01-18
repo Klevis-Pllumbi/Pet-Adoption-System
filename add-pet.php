@@ -3,9 +3,8 @@
 require "connection.php";
 require "functions.php";
 session_start();
-authenticateUser($connection);
+authenticateAdmin($connection);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,16 +33,26 @@ authenticateUser($connection);
         </div>
         <select name="select-species" id="select-species" required>
             <option value="" disabled selected>-- Select Species --</option>
-            <option value="cat_breeds">Cat</option>
-            <option value="dog_breeds">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
             <option value="other">Other</option>
         </select>
         <select name="select-breed" id="select-breed">
             <option value="" disabled selected>-- Select Breed --</option>
         </select>
+        <div class="radio-button-container">
+            <div class="radio-button">
+                <input type="radio" id="female" name="radio-button" value="Female">
+                <label for="female">Female</label>
+            </div>
+            <div class="radio-button">
+                <input type="radio" id="male" name="radio-button" value="Male">
+                <label for="male">Male</label>
+            </div>
+        </div>
         <div class="form-group">
-            <input type="number" name="price" id="price" placeholder=" " required>
-            <label for="price">Price</label>
+            <input type="number" name="adoption-fee" id="adoption-fee" placeholder=" " required>
+            <label for="adoption-fee">Adoption Fee</label>
         </div>
         <div class="form-group">
             <textarea name="description" id="description" placeholder="Other descriptions..." required></textarea>
@@ -68,13 +77,14 @@ authenticateUser($connection);
         $name = $_POST['name'];
         $age = $_POST['age'];
         $species = $_POST['select-species'];
-        $price = $_POST['price'];
+        $adoptionFee = $_POST['adoption-fee'];
         $description = $_POST['description'];
         $breed = $_POST['select-breed'];
+        $gender = $_POST['radio-button'] ?? null;
 
         $errors = [];
 
-        if(empty($name) || empty($age) || empty($species) || empty($description)){
+        if(empty($name) || empty($age) || empty($species) || empty($description) || empty($gender)){
             $errors[] = "All fields are required";
         }
 
@@ -98,8 +108,8 @@ authenticateUser($connection);
         if(empty($errors)){
             $user_id = $_SESSION['id'];
             $created_at = date("Y-m-d H:i:s", time());
-            $sql = "INSERT INTO pets (name, age, species, breed, description, price, added_by, created_at, pet_picture) 
-                    VALUES ('$name', '$age', '$species', '$breed', '$description', '$price', '$user_id', '$created_at', '$targetFile')";
+            $sql = "INSERT INTO pets (name, age, species, breed, gender, description, adoption_fee, added_by, created_at, pet_picture) 
+                    VALUES ('$name', '$age', '$species', '$breed', '$gender', '$description', '$adoptionFee', '$user_id', '$created_at', '$targetFile')";
             if(!mysqli_query($connection, $sql)){
                 $errors[] = "Database error occurred!";
             }
@@ -119,7 +129,7 @@ authenticateUser($connection);
     const elementsToHide = document.getElementsByClassName("show");
     setTimeout(() => {
         Array.from(elementsToHide).forEach((el) => el.classList.remove("show"))
-    }, 5500);
+    }, 4500);
 </script>
 <script src="getBreeds.js"></script>
 <script src="uploadPicture.js"></script>

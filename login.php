@@ -127,7 +127,7 @@ session_start();
         const elementsToHide = document.getElementsByClassName("show");
         setTimeout(() => {
             Array.from(elementsToHide).forEach((el) => el.classList.remove("show"))
-        }, 5500);
+        }, 4500);
     </script>
     <script src="validations.js"></script>
     <script src="loginValidations.js"></script>

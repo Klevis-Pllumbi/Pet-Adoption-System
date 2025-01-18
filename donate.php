@@ -1,3 +1,10 @@
+<?php
+/** @var mysqli $connection */
+require "connection.php";
+require "functions.php";
+session_start();
+authenticateUser($connection);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +23,7 @@
     </p>
     <div class="form-group">
         <input type="number" name="amount" id="amount" placeholder=" " required>
-        <label for="amount">Amount</label>
+        <label for="amount">Amount ($)</label>
     </div>
     <button type="submit" name="submit" id="submit">Donate</button>
 </form>

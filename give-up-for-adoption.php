@@ -40,12 +40,22 @@
             <option value="2">Test 2</option>
             <option value="3">Test 3</option>
         </select>
+        <div class="radio-button-container">
+            <div class="radio-button">
+                <input type="radio" id="female" name="radio-button" value="female">
+                <label for="female">Female</label>
+            </div>
+            <div class="radio-button">
+                <input type="radio" id="male" name="radio-button" value="male">
+                <label for="male">Male</label>
+            </div>
+        </div>
         <div class="form-group">
             <textarea name="description" id="description" placeholder="Other descriptions..." required></textarea>
         </div>
         <div class="checkbox-container" style="margin-left: 0;">
             <input type="checkbox" value="surrender" id="surrender" name="surrender">
-            <label for="surrender" style="font-size: 20px; color: olive;">Surrender</label>
+            <label for="surrender">Surrender</label>
         </div>
     </div>
     <button type="submit" name="submit" id="submit">Submit</button>

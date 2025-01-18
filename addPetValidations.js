@@ -18,15 +18,16 @@ const validateAddPetForm = (event) => {
 
     if(!image.value) {
         imageError.classList.add("show");
-        setTimeout(() => imageError.classList.remove("show"), 5500);
+        setTimeout(() => imageError.classList.remove("show"), 4500);
         event.preventDefault();
     }
 
     if(selectSpecies.value !== "other" && !selectBreed.value) {
         breedError.classList.add("show");
-        setTimeout(() => breedError.classList.remove("show"), 5500);
+        setTimeout(() => breedError.classList.remove("show"), 4500);
         event.preventDefault();
     }
+
 }
 
 addPetForm.addEventListener("submit", validateAddPetForm);
