@@ -60,7 +60,7 @@ session_start();
             if(empty($errors)){
                 $sql = "SELECT * FROM users WHERE email = '$email'";
                 $result = mysqli_query($connection, $sql);
-                if(mysqli_num_rows($result) < 0) {
+                if(mysqli_num_rows($result) <= 0) {
                     $errors[] = "No account found with that email.";
                 } else {
                     $user = mysqli_fetch_assoc($result);

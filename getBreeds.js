@@ -1,9 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     const speciesSelect = document.getElementById("select-species");
     const breedSelect = document.getElementById("select-breed");
+    const otherSpecies = document.getElementById("other-species-group");
 
     speciesSelect.addEventListener("change", function () {
-        const species = speciesSelect.value === 'cat' ? 'cat_breeds' : 'dog_breeds';
+        let species;
+        if(speciesSelect.value === 'cat') {
+            species = 'cat_breeds';
+        } else if(speciesSelect.value === 'dog') {
+            species = 'dog_breeds';
+        } else {
+            species = 'other';
+        }
 
         if (species !== 'other') {
             fetch(`getBreeds.php?species=${species}`)
@@ -14,6 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     return response.json();
                 })
                 .then((breeds) => {
+                    otherSpecies.style.display = 'none';
+                    otherSpecies.firstElementChild.required = false;
+                    breedSelect.style.display = "block";
                     breedSelect.innerHTML = '<option value="">-- Select Breed --</option>';
                     breeds.forEach((breed) => {
                         const option = document.createElement("option");
@@ -27,7 +38,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert("Failed to fetch breeds. Please try again.");
                 });
         } else {
-            breedSelect.innerHTML = '<option value="">-- Select Breed --</option>';
+            breedSelect.style.display = "none";
+            otherSpecies.style.display = 'block';
+            otherSpecies.firstElementChild.required = true;
         }
     });
+});
+
+document.getElementById("surrender").addEventListener("change", function () {
+    const reason = document.getElementById("reason");
+    if (this.checked) {
+        reason.style.display = "block";
+        reason.required = true;
+    } else {
+        reason.style.display = "none";
+        reason.value = "";
+        reason.required = false;
+    }
 });

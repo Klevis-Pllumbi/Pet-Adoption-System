@@ -27,6 +27,65 @@ authenticateUser($connection);
     </div>
     <button type="submit" name="submit" id="submit">Donate</button>
 </form>
+<div class="error-container">
+    <?php
 
+    require 'vendor/autoload.php';
+    require 'PayPalClient.php';
+
+    use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
+
+    $errors = [];
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['amount'])) {
+        $amount = $_POST['amount'];
+
+        if (!is_numeric($amount) || $amount <= 0) {
+            $errors[] = "Invalid donation amount.";
+        }
+
+        try {
+            $client = PayPalClient::client();
+            $request = new OrdersCreateRequest();
+            $request->prefer('return=representation');
+            $request->body = [
+                "intent" => "CAPTURE",
+                "purchase_units" => [[
+                    "amount" => [
+                        "value" => number_format($amount, 2, '.', ''),
+                        "currency_code" => "USD"
+                    ],
+                    "description" => "Donation for Pet Adoption Center"
+                ]],
+                "application_context" => [
+                    "return_url" => "http://localhost/Pet%20Adoption%20System/donation-success.php",
+                    "cancel_url" => "http://localhost/Pet%20Adoption%20System/donation-cancel.php"
+                ]
+            ];
+
+            $response = $client->execute($request);
+
+            foreach ($response->result->links as $link) {
+                if ($link->rel === 'approve') {
+                    header("Location: " . $link->href);
+                    exit();
+                }
+            }
+
+            $errors[] = "Unexpected error. No approval link found.";
+
+        } catch (Exception $e) {
+            $errors[] = "Error creating PayPal order: " . $e->getMessage();
+        }
+    }
+
+    if(!empty($errors)) {
+        foreach ($errors as $error) {
+            echo "<div class='errors show'><p>$error</p></div>";
+        }
+    }
+    mysqli_close($connection);
+    ?>
+</div>
 </body>
 </html>

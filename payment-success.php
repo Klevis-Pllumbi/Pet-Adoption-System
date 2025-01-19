@@ -44,7 +44,7 @@ if (isset($_GET['token']) && isset($_GET['PayerID'])) {
 </head>
 <body>";
         require 'navbar.php';
-        echo "<div class='other-details' style='background-color: rgba(131, 173, 68, 0.8)'>
+        echo "<div class='errors show' style='background-color: rgba(131, 173, 68, 0.8)'>
 <p style='color: antiquewhite; font-weight: bolder;'>Payment successful!</p>
 <p style='color: antiquewhite; font-weight: bolder;'>Thank you for adopting.</p>
 </div>

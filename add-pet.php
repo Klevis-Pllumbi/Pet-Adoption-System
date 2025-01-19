@@ -37,6 +37,10 @@ authenticateAdmin($connection);
             <option value="dog">Dog</option>
             <option value="other">Other</option>
         </select>
+        <div class="form-group" style="display: none;" id="other-species-group">
+            <input type="text" name="other-species" id="other-species" placeholder=" ">
+            <label for="other-species">Species</label>
+        </div>
         <select name="select-breed" id="select-breed">
             <option value="" disabled selected>-- Select Breed --</option>
         </select>
@@ -63,7 +67,7 @@ authenticateAdmin($connection);
 <div class="error-container">
     <div class="age-error errors" id="age-error">
         <p>The age of the pet should be in the format:<br>
-            age + (year|years|month|months) + old (optional)
+            age + (year | years | month | months) + old (optional)
         </p>
     </div>
     <div class="image-error errors" id="image-error">
@@ -79,8 +83,9 @@ authenticateAdmin($connection);
         $species = $_POST['select-species'];
         $adoptionFee = $_POST['adoption-fee'];
         $description = $_POST['description'];
-        $breed = $_POST['select-breed'];
+        $breed = $_POST['select-breed'] ?? null;
         $gender = $_POST['radio-button'] ?? null;
+        $otherSpecies = $_POST['other-species'];
 
         $errors = [];
 
@@ -90,6 +95,10 @@ authenticateAdmin($connection);
 
         if($species != "other" && empty($breed)){
             $errors[] = "Breed is required";
+        }
+
+        if($species == "other" && empty($otherSpecies)){
+            $errors[] = "Species is required";
         }
 
         if(isset($_FILES['file-input']) && !empty($_FILES['file-input']['name'])){
@@ -103,16 +112,32 @@ authenticateAdmin($connection);
             } else {
                 $errors[] = "File is not an image.";
             }
+        } else {
+            $errors[] = "You must provide a picture of the pet.";
         }
 
         if(empty($errors)){
             $user_id = $_SESSION['id'];
             $created_at = date("Y-m-d H:i:s", time());
+            if($species == "other") {
+                $species = $otherSpecies;
+                $breed = $otherSpecies;
+            }
+
             $sql = "INSERT INTO pets (name, age, species, breed, gender, description, adoption_fee, added_by, created_at, pet_picture) 
-                    VALUES ('$name', '$age', '$species', '$breed', '$gender', '$description', '$adoptionFee', '$user_id', '$created_at', '$targetFile')";
-            if(!mysqli_query($connection, $sql)){
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $connection->prepare($sql);
+            $stmt->bind_param("ssssssiiss", $name, $age, $species, $breed, $gender, $description, $fee, $user_id, $created_at, $targetFile);
+            if (!$stmt->execute()) {
                 $errors[] = "Database error occurred!";
             }
+            $stmt->close();
+        }
+
+        if(empty($errors)){
+            echo "<div class='errors show' style='background-color: rgba(131, 173, 68)'>
+                      <p style='color: antiquewhite; font-weight: bolder;'>Pet registered successfully!</p>
+                  </div>";
         }
 
         if(!empty($errors)) {

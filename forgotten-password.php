@@ -7,7 +7,7 @@ include "functions.php";
 <html lang="en">
 <head>
     <?php require 'links.php' ?>
-    <title>FurEver Home | Forgotten Password</title>
+    <title>FurEver Home | Change Password</title>
 </head>
 <body>
 <img class="logo" src="logo.png" alt="Logo image" width="180" height="180"></img>

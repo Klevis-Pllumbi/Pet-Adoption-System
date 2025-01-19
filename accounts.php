@@ -3,7 +3,7 @@
 require "connection.php";
 require "functions.php";
 session_start();
-authenticateUser($connection);
+authenticateAdmin($connection);
 ?>
 <!DOCTYPE html>
 <html lang="en">
