@@ -104,7 +104,7 @@ authenticateUser($connection);
 
         if(empty($errors)){
             echo "<div class='errors show' style='background-color: rgba(131, 173, 68)'>
-                      <p style='color: antiquewhite; font-weight: bolder;'>Changes saved successfully!</p>
+                      <p style='color: antiquewhite;'>Changes saved successfully!</p>
                   </div>";
         }
 

@@ -24,16 +24,9 @@ authenticateUser($connection);
     </div>
 
     <div class="card-container" id="card-container"></div>
-    <div class="error-container">
-        <?php
-        if(!empty($errors)) {
-            foreach ($errors as $error) {
-                echo "<div class='errors show'><p>$error</p></div>";
-            }
-        }
-        mysqli_close($connection);
-        ?>
-    </div>
+
+    <?php mysqli_close($connection); ?>
+
     <script>
         const filterButtons = document.querySelectorAll('.filter-btn');
         const cardContainer = document.getElementById('card-container');
@@ -84,14 +77,7 @@ authenticateUser($connection);
         });
     </script>
     <script>
-        const elementsToHide = document.getElementsByClassName("show");
-        setTimeout(() => {
-            Array.from(elementsToHide).forEach((el) => el.classList.remove("show"))
-        }, 5500);
-    </script>
-    <script>
         document.getElementById('card-container').addEventListener('click', function (e) {
-            console.log('Clicked:', e.target);
             if (e.target && e.target.classList.contains('details-button')) {
                 const petId = e.target.getAttribute('data-pet-id');
                 window.location.href = `details.php?pet_id=${petId}`;

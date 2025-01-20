@@ -40,8 +40,8 @@ if (isset($_GET['token'])) {
 <body>";
         require 'navbar.php';
         echo "<div class='errors show' style='background-color: rgba(131, 173, 68)'>
-<p style='color: antiquewhite; font-weight: bolder;'>Thank you for your donation of $$amount!</p>
-<p style='color: antiquewhite; font-weight: bolder;'>Transaction ID: $transactionId</p>
+<p style='color: antiquewhite;'>Thank you for your donation of $$amount!</p>
+<p style='color: antiquewhite;'>Transaction ID: $transactionId</p>
 </div>
 </body>
 </html>";

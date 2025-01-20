@@ -72,7 +72,13 @@ include "functions.php";
         if(!$user) {
             $errors[] = "That email does not exist.";
         } else {
-            if(!sendVerificationEmail($email, $verification_token)) {
+            $subject = 'Verification Email';
+            $body = "<h2>You have been signed up!</h2>
+                     <p>Verify your email with the link below.</p>
+                     <br>
+                     <a href='http://localhost/Pet%20Adoption%20System/verify-email.php?token=$verification_token'>Click me</a>";
+
+            if(!sendEmail($email, $subject, $body)) {
                 $errors[] = "Something went wrong sending email verification link.";
             }
         }
@@ -86,7 +92,9 @@ include "functions.php";
                 $errors[] = "Something went wrong.";
             }
 
-            $errors[] = "Please check your email for a verification link.";
+            echo "<div class='errors show' style='background-color: rgba(131, 173, 68)'>
+                      <p style='color: antiquewhite;'>Please check your email for a verification link.</p>
+                  </div>";
         }
 
         if(!empty($errors)) {

@@ -9,16 +9,8 @@ authenticateAdmin($connection);
 <html lang="en">
 <head>
     <?php require 'links.php' ?>
-    <title>FurEver Home | Accounts</title>
+    <title>FurEver Home | Pets</title>
 </head>
-<style>
-    .details > p:last-child {
-        grid-column: 1 / -1;
-    }
-    .details > p:first-child {
-        grid-column: 1 / -1;
-    }
-</style>
 <body>
 
 <?php require 'admin-navbar.php' ?>
@@ -33,20 +25,21 @@ authenticateAdmin($connection);
 <div class="card-container" id="card-container">
     <?php
     $errors = [];
-    $id = $_SESSION['id'];
-    $sql = "SELECT id, name, surname, email, profile_picture FROM `users` WHERE id != '$id'";
+    $sql = "SELECT id, name, age, gender, breed, pet_picture FROM `pets` WHERE status = 'available'";
     if ($result = mysqli_query($connection, $sql)) {
         if (mysqli_num_rows($result) > 0) {
-            while($user = mysqli_fetch_assoc($result)) { ?>
+            while($pet = mysqli_fetch_assoc($result)) { ?>
                 <div class="card">
-                    <img src="<?php echo empty($user['profile_picture']) ? 'logo.png' : htmlspecialchars($user['profile_picture']) ?>" alt="<?php echo $user['name'] . '_profile_picture' ?>">
+                    <img src="<?php echo empty($pet['pet_picture']) ? 'logo.png' : htmlspecialchars($pet['pet_picture']) ?>" alt="<?php echo $pet['name'] . '_pet_picture' ?>">
                     <div class="details">
-                        <p>Name: <span><?php echo htmlspecialchars($user['name'] . " " . $user['surname']) ?></span></p>
-                        <p>Email: <a href="mailto:<?php echo htmlspecialchars($user['email']) ?>"><span><?php echo htmlspecialchars($user['email']) ?></span></a></p>
+                        <p>Name: <span><?php echo htmlspecialchars($pet['name']) ?></span></p>
+                        <p>Gender: <span><?php echo htmlspecialchars($pet['gender']) ?></span></p>
+                        <p>Breed: <span><?php echo htmlspecialchars($pet['breed']) ?></span></p>
+                        <p>Age: <span><?php echo htmlspecialchars($pet['age']) ?></span></p>
                     </div>
                     <div class="buttons">
-                        <button type="button" class="details-button" data-user-id="<?php echo htmlspecialchars($user['id']) ?>" name="details-<?php echo htmlspecialchars($user['id']) ?>">Details</button>
-                        <button type="button" class="delete-button" data-user-id="<?php echo htmlspecialchars($user['id']) ?>" name="delete-<?php echo htmlspecialchars($user['id']) ?>">Delete</button>
+                        <button type="button" class="details-button" data-pet-id="<?php echo htmlspecialchars($pet['id']) ?>">Details</button>
+                        <button type="button" class="delete-button" data-pet-id="<?php echo htmlspecialchars($pet['id']) ?>">Delete</button>
                     </div>
                 </div>
             <?php }
@@ -77,15 +70,15 @@ authenticateAdmin($connection);
 <script>
     document.getElementById('card-container').addEventListener('click', function (e) {
         if (e.target && e.target.classList.contains('details-button')) {
-            const userId = e.target.getAttribute('data-user-id');
-            window.location.href = `details.php?user_id=${userId}`;
+            const petId = e.target.getAttribute('data-pet-id');
+            window.location.href = `details.php?pet_id=${petId}`;
         }
     });
 
     document.getElementById('card-container').addEventListener('click', function (e) {
         if (e.target && e.target.classList.contains('delete-button')) {
-            const userId = e.target.getAttribute('data-user-id');
-            window.location.href = `delete.php?user_id=${userId}`;
+            const petId = e.target.getAttribute('data-pet-id');
+            window.location.href = `delete.php?pet_id=${petId}`;
         }
     });
 </script>
@@ -93,7 +86,7 @@ authenticateAdmin($connection);
     document.getElementById('search').addEventListener('input', function () {
         const query = this.value;
 
-        fetch('search-accounts.php', {
+        fetch('search-pets.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'query=' + encodeURIComponent(query)

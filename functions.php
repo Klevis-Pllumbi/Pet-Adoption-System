@@ -12,7 +12,7 @@ use Dotenv\Dotenv;
 // Load environment variables
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-function sendVerificationEmail(string $email, string $verification_token): bool {
+function sendEmail(string $email, string $subject, string $body): bool {
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
@@ -28,11 +28,8 @@ function sendVerificationEmail(string $email, string $verification_token): bool 
         $mail->addAddress($email);
 
         $mail->isHTML(true);
-        $mail->Subject = 'Verification Email';
-        $template = "<h2>You have been signed up!</h2>
-                     <p>Verify your email with the link below.</p>
-                     <br>
-                     <a href='http://localhost/Pet%20Adoption%20System/verify-email.php?token=$verification_token'>Click me</a>";
+        $mail->Subject = $subject;
+        $template = $body;
 
         $mail->Body = $template;
 

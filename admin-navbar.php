@@ -8,8 +8,9 @@
         <a href="add-pet.php" class="nav">Add Pet</a>
         <a href="reports.php" class="nav">Reports</a>
         <a href="surrender-requests.php" class="nav">Surrender Requests</a>
-        <a href="donations.php" class="nav">Donations</a>
+        <a href="payments_donations.php" class="nav">Donations & Payments</a>
         <a href="accounts.php" class="nav">Accounts</a>
+        <a href="pets.php" class="nav">Pets</a>
         <a href="logout.php" class="nav">Log Out</a>
     </div>
 </div>

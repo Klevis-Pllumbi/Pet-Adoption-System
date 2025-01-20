@@ -155,7 +155,7 @@ authenticateUser($connection);
         if(empty($errors)){
             if(isset($_POST['surrender'])) {
                 echo "<div class='errors show' style='background-color: rgba(131, 173, 68)'>
-                                     <p style='color: antiquewhite; font-weight: bolder;'>Pet registered successfully!<br>
+                                     <p style='color: antiquewhite;'>Pet registered successfully!<br>
                                      You will get an email soon for your surrender request!</p>
                                   </div>";
             } else {

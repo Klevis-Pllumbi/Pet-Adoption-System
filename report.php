@@ -93,7 +93,7 @@ authenticateUser($connection);
 
         if(empty($errors)){
             echo "<div class='errors show' style='background-color: rgba(131, 173, 68)'>
-                      <p style='color: antiquewhite; font-weight: bolder;'>Reported successfully! Thank you for your care!</p>
+                      <p style='color: antiquewhite;'>Reported successfully! Thank you for your care!</p>
                   </div>";
         }
 

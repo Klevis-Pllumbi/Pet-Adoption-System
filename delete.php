@@ -13,5 +13,12 @@ if(isset($_GET["user_id"])){
     } else {
         echo "Error deleting record. Try again.";
     }
-
+} else if(isset($_GET["pet_id"])){
+    $id = $_GET["pet_id"];
+    $sql = "DELETE FROM pets WHERE id='$id'";
+    if(mysqli_query($connection, $sql)) {
+        header("Location: pets.php");
+    } else {
+        echo "Error deleting record. Try again.";
+    }
 }
