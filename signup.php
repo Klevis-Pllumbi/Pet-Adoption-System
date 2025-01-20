@@ -107,7 +107,7 @@ include "functions.php";
         }
 
         if(empty($errors)) {
-            $subject = 'Verification Email';
+            $subject = "Verification Email";
             $body = "<h2>You have been signed up!</h2>
                      <p>Verify your email with the link below.</p>
                      <br>

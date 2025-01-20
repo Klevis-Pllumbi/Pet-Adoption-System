@@ -20,8 +20,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['query'])){
                 "<img alt='Profile Picture' src='" . (empty($user['profile_picture']) ? 'logo.png' : htmlspecialchars($user['profile_picture'])) . "'>" .
                 "<div class='details'>
                              <p>Name: <span>" . htmlspecialchars($user['name'] . " " . $user['surname']) . "</span></p>
-                             <p>Adopted: <span>" . htmlspecialchars($user['adopted']) . "</span></p>
-                             <p>Surrenders: <span>" . htmlspecialchars($user['surrendered']) . "</span></p>
                              <p>Email: <span>" . htmlspecialchars($user['email']) . "</span></p>
                           </div>
                           <div class='buttons'>

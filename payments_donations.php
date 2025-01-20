@@ -72,7 +72,13 @@ if (!$payments_result) {
         .container {
             gap: 10px;
             position: absolute;
-            top: -35px;
+            top: -15px;
+            flex-direction: column;
+            /*width: 80%;*/
+        }
+        p {
+            text-align: center;
+            inset-inline: auto;
         }
     </style>
 </head>
@@ -94,18 +100,21 @@ if (!$payments_result) {
         </tr>
         </thead>
         <tbody>
-        <?php while ($donation = mysqli_fetch_assoc($donations_result)): ?>
+        <?php
+        $total = 0;
+        while ($donation = mysqli_fetch_assoc($donations_result)): ?>
             <tr>
                 <td><?php echo htmlspecialchars($donation['name']); ?></td>
                 <td><?php echo htmlspecialchars($donation['surname']); ?></td>
                 <td><a href="mailto:<?php echo htmlspecialchars($donation['email']); ?>"><?php echo htmlspecialchars($donation['email']); ?></a></td>
-                <td>$<?php echo htmlspecialchars($donation['amount']); ?></td>
+                <td>$<?php echo htmlspecialchars($donation['amount']); $total += $donation['amount'];?></td>
                 <td><?php echo htmlspecialchars($donation['donated_at']); ?></td>
                 <td><?php echo htmlspecialchars($donation['transaction_id']); ?></td>
             </tr>
         <?php endwhile; ?>
         </tbody>
     </table>
+    <p>Total: <span>$<?php echo $total ?></span></p>
 
     <h2>Adoption Payments</h2>
     <table>
@@ -123,14 +132,16 @@ if (!$payments_result) {
         </tr>
         </thead>
         <tbody>
-        <?php while ($payment = mysqli_fetch_assoc($payments_result)): ?>
+        <?php
+        $total = 0;
+        while ($payment = mysqli_fetch_assoc($payments_result)): ?>
             <tr>
                 <td><?php echo htmlspecialchars($payment['user_name']); ?></td>
                 <td><?php echo htmlspecialchars($payment['surname']); ?></td>
                 <td><a href="mailto:<?php echo htmlspecialchars($payment['email']); ?>"><?php echo htmlspecialchars($payment['email']); ?></a></td>
                 <td><?php echo htmlspecialchars($payment['pet_id']); ?></td>
                 <td><?php echo htmlspecialchars($payment['pet_name']); ?></td>
-                <td>$<?php echo htmlspecialchars($payment['amount']); ?></td>
+                <td>$<?php echo htmlspecialchars($payment['amount']); $total += $payment['amount'];?></td>
                 <td><?php echo htmlspecialchars($payment['requested_at']); ?></td>
                 <td><?php echo htmlspecialchars($payment['adoption_date']) != "0000-00-00 00:00:00" ? "adopted" : "waiting"; ?></td>
                 <td><?php echo htmlspecialchars($payment['transaction_id']); ?></td>
@@ -138,6 +149,7 @@ if (!$payments_result) {
         <?php endwhile; ?>
         </tbody>
     </table>
+    <p>Total: <span>$<?php echo $total ?></span></p>
 </div>
 
 </body>
