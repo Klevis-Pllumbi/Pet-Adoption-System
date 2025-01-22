@@ -31,11 +31,7 @@ authenticateUser($connection);
     $errors = [];
     if (isset($_GET['user_id'])) {
 
-        if($_SESSION['id'] == 1) {
-            require 'admin-navbar.php';
-        } else {
-            require 'navbar.php';
-        }
+        require 'admin-navbar.php';
 
         $id = $_GET['user_id'];
         $sql = "SELECT * FROM users WHERE id = '$id'";
@@ -111,11 +107,7 @@ authenticateUser($connection);
         <?php }
     } else if(isset($_GET['report_id'])) {
 
-        if($_SESSION['id'] == 1) {
-            require 'admin-navbar.php';
-        } else {
-            require 'navbar.php';
-        }
+        require 'admin-navbar.php';
 
         $id = $_GET['report_id'];
         $sql = "

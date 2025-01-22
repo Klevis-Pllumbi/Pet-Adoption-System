@@ -37,7 +37,7 @@ if ($result = mysqli_query($connection, $sql)) {
             <div class="card">
             <img src="<?php echo empty($report['report_picture']) ? 'logo.png' : htmlspecialchars($report['report_picture']) ?>" alt="<?php echo $report['id'] . '_report_picture' ?>">
             <div class="details">
-                <p>Report by: <a><a href="mailto:<?php echo htmlspecialchars($report['email']) ?>"><span><?php echo htmlspecialchars($report['name']) . " " . htmlspecialchars($report['surname']) ?></span></a></p>
+                <p>Reported by: <a><a href="mailto:<?php echo htmlspecialchars($report['email']) ?>"><span><?php echo htmlspecialchars($report['name']) . " " . htmlspecialchars($report['surname']) ?></span></a></p>
                 <p>Location: <span><?php echo htmlspecialchars($report['location']) ?></span></p>
             </div>
             <div class="buttons">

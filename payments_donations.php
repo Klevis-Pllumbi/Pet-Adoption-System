@@ -74,7 +74,6 @@ if (!$payments_result) {
             position: absolute;
             top: -15px;
             flex-direction: column;
-            /*width: 80%;*/
         }
         p {
             text-align: center;

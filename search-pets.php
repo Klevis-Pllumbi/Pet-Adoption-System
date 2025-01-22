@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['query'])){
     if($result->num_rows > 0){
         while($pet = $result->fetch_assoc()){
             echo "<div class='card'>" .
-                "<img alt='Profile Picture' src='" . (empty($pet['profile_picture']) ? 'logo.png' : htmlspecialchars($pet['profile_picture'])) . "'>" .
+                "<img alt='Profile Picture' src='" . (empty($pet['pet_picture']) ? 'logo.png' : htmlspecialchars($pet['pet_picture'])) . "'>" .
                 "<div class='details'>
                              <p>Name: <span>" . htmlspecialchars($pet['name']) . "</span></p>
                              <p>Gender: <span>" . htmlspecialchars($pet['gender']) . "</span></p>

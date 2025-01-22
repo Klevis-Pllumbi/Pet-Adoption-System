@@ -43,6 +43,10 @@ function sendEmail(string $email, string $subject, string $body): bool {
 function authenticateUser($connection): bool {
 
     if(isset($_SESSION['id'])) {
+        if($_SESSION['id'] == 1) {
+            header("Location: index.php");
+            exit();
+        }
         return true;
     }
 
@@ -55,6 +59,9 @@ function authenticateUser($connection): bool {
             $user = mysqli_fetch_assoc($result);
             $_SESSION['id'] = $user['id'];
 
+            if($user['role'] == 'admin') {
+                header("Location: index.php");
+            }
             return true;
         }
     }
@@ -67,19 +74,11 @@ function authenticateUser($connection): bool {
 function authenticateAdmin($connection): bool {
 
     if(isset($_SESSION['id'])) {
-        $sql = "SELECT * FROM `users` WHERE `id` = '" . $_SESSION['id'] . "'";
-        $result = mysqli_query($connection, $sql);
-
-        if(mysqli_num_rows($result) > 0) {
-            $user = mysqli_fetch_assoc($result);
-            $_SESSION['id'] = $user['id'];
-
-            if ($user['role'] == 'user') {
-                header("Location: index.php");
-            }
+        if($_SESSION['id'] != 1) {
+            header("Location: index.php");
+            exit();
         }
-
-            return true;
+        return true;
     }
 
     if(isset($_COOKIE['remember_me'])) {

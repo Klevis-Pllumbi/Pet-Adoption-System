@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     const elementsToHide = document.getElementsByClassName("show");
     setTimeout(() => {
         Array.from(elementsToHide).forEach((el) => el.classList.remove("show"))
-    }, 4500);
+    }, 5500);
 </script>
 <script>
     const filterButtons = document.querySelectorAll('.filter-btn');

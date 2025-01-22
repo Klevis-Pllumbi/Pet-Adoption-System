@@ -137,6 +137,22 @@ if (isset($_POST['refund'])) {
                       </body>
                       </html>";
         }
+        $sql = "UPDATE adoptions SET status = 'REFUNDED' WHERE transaction_id = '$transactionId'";
+        if(!mysqli_query($connection, $sql)) {
+            echo "<!DOCTYPE html>
+                  <html lang='en'>
+                  <head>";
+            require 'links.php';
+            echo "<title>FurEver Home | Message</title>
+                  </head>
+                  <body>";
+            require 'admin-navbar.php';
+            echo "<div class='errors show'>
+                          <p>Database error occurred!</p>
+                      </div>
+                      </body>
+                      </html>";
+        }
         $sql = "SELECT users.email 
                     FROM adoptions 
                     INNER JOIN users ON adoptions.user_id = users.id 
