@@ -1,9 +1,8 @@
 <?php
 /** @var mysqli $connection */
 require "connection.php";
-require "functions.php";
+require_once "functions.php";
 session_start();
-authenticateAdmin($connection);
 
 if(isset($_GET['pet_id']) && isset($_GET['requester_id']) && isset($_GET['adoption_id'])){
     $pet_id = $_GET['pet_id'];

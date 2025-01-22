@@ -1,7 +1,9 @@
 <?php
 /** @var mysqli $connection */
 require "connection.php";
+require "functions.php";
 session_start();
+checkSessionTimeout();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,5 +133,6 @@ session_start();
     </script>
     <script src="validations.js"></script>
     <script src="loginValidations.js"></script>
+    <script src="inactivity.js"></script>
 </body>
 </html>

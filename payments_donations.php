@@ -1,9 +1,7 @@
 <?php
 /** @var mysqli $connection */
 require "connection.php";
-require "functions.php";
 session_start();
-authenticateAdmin($connection);
 
 $donations_sql = "
     SELECT 
@@ -150,6 +148,6 @@ if (!$payments_result) {
     </table>
     <p>Total: <span>$<?php echo $total ?></span></p>
 </div>
-
+<?php mysqli_close($connection) ?>
 </body>
 </html>

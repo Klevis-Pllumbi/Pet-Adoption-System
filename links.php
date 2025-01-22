@@ -6,3 +6,4 @@
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;family=Righteous&amp;display=swap" rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="icon.png">
 <link rel="stylesheet" href="style.css">
+<script src="inactivity.js" defer></script>

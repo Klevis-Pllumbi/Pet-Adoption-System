@@ -1,7 +1,9 @@
 <?php
 /** @var mysqli $connection */
 require "connection.php";
-include "functions.php";
+require "functions.php";
+session_start();
+checkSessionTimeout();
 ?>
 <!DOCTYPE html>
 <html lang="en">

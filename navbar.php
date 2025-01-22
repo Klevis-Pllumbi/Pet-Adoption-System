@@ -1,3 +1,9 @@
+<?php
+/** @var mysqli $connection */
+require_once "functions.php";
+authenticateUser($connection);
+checkSessionTimeout();
+?>
 <div class="navbar">
     <div class="logo">
         <img src="icon.png" alt="logo">

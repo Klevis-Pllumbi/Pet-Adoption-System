@@ -3,7 +3,7 @@
 require "connection.php";
 require "functions.php";
 session_start();
-authenticateUser($connection);
+authenticateAdmin($connection);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['query'])){
     $query = $_POST['query'];

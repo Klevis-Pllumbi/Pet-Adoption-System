@@ -1,9 +1,7 @@
 <?php
 /** @var mysqli $connection */
 require "connection.php";
-require "functions.php";
 session_start();
-authenticateUser($connection);
 
 require 'vendor/autoload.php';
 require 'PayPalClient.php';
@@ -11,7 +9,7 @@ require 'PayPalClient.php';
 use PayPalCheckoutSdk\Orders\OrdersCaptureRequest;
 
 if (isset($_GET['token'])) {
-    $orderId = $_GET['token']; // Token is the order ID from PayPal
+    $orderId = $_GET['token'];
 
     try {
         $client = PayPalClient::client();

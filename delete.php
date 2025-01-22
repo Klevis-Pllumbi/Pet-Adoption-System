@@ -1,9 +1,7 @@
 <?php
 /** @var mysqli $connection */
 require "connection.php";
-require "functions.php";
 session_start();
-authenticateUser($connection);
 
 if(isset($_GET["user_id"])){
     $id = $_GET["user_id"];

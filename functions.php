@@ -93,7 +93,6 @@ function authenticateAdmin($connection): bool {
             if($user['role'] == 'user') {
                 header("Location: index.php");
             }
-
             return true;
         }
     }
@@ -101,4 +100,20 @@ function authenticateAdmin($connection): bool {
     header("Location: login.php");
     exit();
 
+}
+
+function checkSessionTimeout(): void {
+
+    $sessionTimeout = 30;
+    if (isset($_SESSION['LAST_ACTIVITY'])) {
+        $inactivityDuration = time() - $_SESSION['LAST_ACTIVITY'];
+        if ($inactivityDuration > $sessionTimeout) {
+            session_unset();
+            session_destroy();
+            header("Location: index.php");
+            exit;
+        }
+    }
+
+    $_SESSION['LAST_ACTIVITY'] = time();
 }

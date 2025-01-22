@@ -1,9 +1,9 @@
 <?php
 /** @var mysqli $connection */
 require "connection.php";
-require "functions.php";
+require_once "functions.php";
 session_start();
-authenticateAdmin($connection);
+
 require 'vendor/autoload.php';
 require 'PayPalClient.php';
 

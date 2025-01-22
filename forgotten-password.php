@@ -1,7 +1,8 @@
 <?php
 /** @var mysqli $connection */
 require "connection.php";
-include "functions.php";
+require "functions.php";
+checkSessionTimeout();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +53,6 @@ include "functions.php";
 
         $errors = [];
 
-        // Validations
         if(empty($email) || empty($password) || empty($passwordConfirm)) {
             $errors[] = "All fields are required.";
         }
@@ -115,5 +115,6 @@ include "functions.php";
 </script>
 <script src="validations.js"></script>
 <script src="forgottenPasswordValidations.js"></script>
+<script src="inactivity.js"></script>
 </body>
 </html>

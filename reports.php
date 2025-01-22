@@ -1,9 +1,7 @@
 <?php
 /** @var mysqli $connection */
 require "connection.php";
-require "functions.php";
 session_start();
-authenticateAdmin($connection);
 ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
