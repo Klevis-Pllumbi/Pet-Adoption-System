@@ -104,7 +104,7 @@ function authenticateAdmin($connection): bool {
 
 function checkSessionTimeout(): void {
 
-    $sessionTimeout = 30;
+    $sessionTimeout = 900;
     if (isset($_SESSION['LAST_ACTIVITY'])) {
         $inactivityDuration = time() - $_SESSION['LAST_ACTIVITY'];
         if ($inactivityDuration > $sessionTimeout) {

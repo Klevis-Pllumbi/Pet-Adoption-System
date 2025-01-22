@@ -84,7 +84,7 @@ if(isset($_GET['pet_id']) && isset($_GET['requester_id']) && isset($_GET['adopti
                 $subject = 'Approval Email';
                 $body = "<h2>Your request for adoption has been approved!</h2>
                                  <p>The pet you are adopting is " . htmlspecialchars($adder['name']) . " " . htmlspecialchars($adder['surname']) . "'s.</p>
-                                 <p>To take the pet home you should contact <a href='mailto:" . htmlspecialchars($adder['email']) . "'" . htmlspecialchars($adder['email']) . ".</a></p>
+                                 <p>To take the pet home you should contact <a href='mailto:" . htmlspecialchars($adder['email']) . "'>" . htmlspecialchars($adder['email']) . ".</a></p>
                                  <p>Thank you for your adoption!</p>";
 
                 if (!sendEmail($requesterEmail, $subject, $body)) {

@@ -5,7 +5,7 @@ function resetInactivityTimer() {
     inactivityTimeout = setTimeout(() => {
         alert("You have been inactive for 15 minutes. Redirecting to the first page.");
         window.location.href = "index.php";
-    }, 30000);
+    }, 900000);
 }
 
 window.onload = resetInactivityTimer;
