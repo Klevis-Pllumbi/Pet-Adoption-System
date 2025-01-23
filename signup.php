@@ -71,7 +71,6 @@ checkSessionTimeout();
 
         $errors = [];
 
-        // Validations
         if(empty($name) || empty($surname) || empty($email) || empty($password) || empty($passwordConfirm)) {
             $errors[] = "All fields are required.";
         }

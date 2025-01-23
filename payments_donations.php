@@ -104,7 +104,7 @@ if (!$payments_result) {
                 <td><?php echo htmlspecialchars($donation['name']); ?></td>
                 <td><?php echo htmlspecialchars($donation['surname']); ?></td>
                 <td><a href="mailto:<?php echo htmlspecialchars($donation['email']); ?>"><?php echo htmlspecialchars($donation['email']); ?></a></td>
-                <td>$<?php echo htmlspecialchars($donation['amount']); $total += $donation['amount'];?></td>
+                <td><?php echo htmlspecialchars($donation['amount']); $total += $donation['amount'];?></td>
                 <td><?php echo htmlspecialchars($donation['donated_at']); ?></td>
                 <td><?php echo htmlspecialchars($donation['transaction_id']); ?></td>
             </tr>

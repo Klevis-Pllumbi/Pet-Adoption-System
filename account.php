@@ -44,7 +44,7 @@ session_start();
                 </div>
             </div>
             <div class="update-details">
-                <button type="button" id="change-password" name="change-password" onclick="redirectTo('forgotten-password.php')">Change Password</button>
+                <button type="button" id="change-password" name="change-password" onclick="redirectTo('change-password.php')">Change Password</button>
             </div>
         </div>
     </div>

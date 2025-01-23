@@ -28,7 +28,7 @@ checkSessionTimeout();
         </div>
         <button type="submit" name="submit" id="login">Log In</button>
     </form>
-    <a href="forgotten-password.php">Forgotten Password</a>
+    <a href="change-password.php">Forgotten Password</a>
     <p>Do not have an account? <a href="signup.php">Sign Up</a></p>
     <div class="error-container">
         <div class="email-error errors" id="email-error">

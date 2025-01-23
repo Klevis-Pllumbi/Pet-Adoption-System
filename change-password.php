@@ -12,7 +12,7 @@ checkSessionTimeout();
 </head>
 <body>
 <img class="logo" src="logo.png" alt="Logo image" width="180" height="180"></img>
-<form action="forgotten-password.php" method="post" id="forgotten-password-form">
+<form action="change-password.php" method="post" id="forgotten-password-form">
     <div class="form-group">
         <input type="email" name="email" id="email" placeholder=" " required>
         <label for="email">Email</label>
