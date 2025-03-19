@@ -1,6 +1,5 @@
 const signupForm = document.getElementById("signup-form");
-const name = document.getElementById("name");
-const nameError = document.getElementById("name-error");
+const name = document.getElementById("name");const nameError = document.getElementById("name-error");
 const surname = document.getElementById("surname");
 const surnameError = document.getElementById("surname-error");
 const email = document.getElementById("email");
