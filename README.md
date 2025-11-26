@@ -118,5 +118,5 @@ Manage adoption requests, surrender requests, reports, pets, users, and send app
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Klevis-Pllumbi/Pet-AdoptioN-System.git
-cd <repo>
+git clone https://github.com/Klevis-Pllumbi/Pet-Adoption-System.git
+cd Pet-Adoption-System
